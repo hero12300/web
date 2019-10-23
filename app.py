@@ -7,7 +7,7 @@ app = Flask(__name__)#初始化
 
 class Getfile(object):
     #获取文章存储文件夹路径
-    folderpath = os.path.normpath(os.path.jion(os.path.dirname(__file__),'..',files))
+    folderpath = os.path.normpath(os.path.join(os.path.dirname(__file__),'..',files))
     def __init__(self):
         self._files = self.filepath()#将文章内容以字典形式存储在变量中
 
@@ -15,7 +15,7 @@ class Getfile(object):
         result = {}
         allfile = os.listdir(self.floderpath)#获取文件夹内所有的文件和文件夹
         for wj in allfile:
-            filename = os.path.jion(self.floderpath,wj)#遍历文件后得到文件路径
+            filename = os.path.join(self.floderpath,wj)#遍历文件后得到文件路径
             with open(filename) as f:
                 result[filename[:-5]]=json.load(f)#读取文件内容并存入字典 这里是字典嵌套字典
         return result
